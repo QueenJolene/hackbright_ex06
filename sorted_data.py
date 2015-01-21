@@ -4,6 +4,10 @@ that reads the file scores.txt, then spits out the ratings
 in alphabetical order by restaurant.
 """
 
+from sys import argv
+
+script_name, file_name = argv
+
 def split_file(file_name):
 
     scores_file = open(file_name, "r")
@@ -15,10 +19,14 @@ def split_file(file_name):
     
     return score_dict
 
-score_dict = split_file("scores.txt")
-sorted_keys = sorted(score_dict)
 
-for key in sorted_keys:
-    print "Restaurant '%s' is rated at %s" % (key, score_dict[key])
+def main():
 
-# code review by cynthia
+    score_dict = split_file(file_name)
+    sorted_keys = sorted(score_dict)
+
+    for key in sorted_keys:
+        print "Restaurant '%s' is rated at %s" % (key, score_dict[key])
+
+if __name__ == '__main__':
+    main()
